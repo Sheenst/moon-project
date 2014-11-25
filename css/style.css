@@ -1,0 +1,113 @@
+/* 
+Project Name: Moon
+Client: GA FEWD SF
+Author: Sheena Stevens
+*/
+
+/******************************************
+/* REFERENCE/NOTES
+/*******************************************/
+
+/*
+Font Families for Reference:
+*/
+
+/*Night Sky background color:
+background: #002240;*/
+
+/******************************************
+/* SETUP                   
+/*******************************************/
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+/******************************************
+/* BASE STYLES                   
+/*******************************************/
+
+body {
+     color: #DCDCDC;
+     font-size: 12px;
+     line-height: 1.4;
+     font-family: Helvetica, Arial, sans-serif;
+}
+
+/******************************************
+/* LAYOUT                   
+/*******************************************/
+
+/* Center the container */
+#container {
+	width: 320px;
+	margin: auto;
+     text-align: center;
+     background: #002240;
+     position: relative;
+
+}
+
+header {
+     margin: auto;
+     text-align: center;
+     border-bottom: solid white 2px;
+}
+
+footer {
+
+}
+
+/******************************************
+/* ADDITIONAL STYLES                   
+/*******************************************/
+
+h1 {
+     display: inline-block;
+}
+
+h3 {
+     display: inline-block;
+}
+
+div#datePicker {
+     display: inline;
+     margin: auto;
+     padding: 20px;
+}
+
+#datePicker img {
+     position: absolute; top: 90px;
+}
+
+#datePicker img#leftButton {
+     position: absolute; left: 20px;
+}
+
+#datePicker img#rightButton {
+     position: absolute; right: 20px;
+}
+
+#datePicker h2 {
+     margin: auto;
+}
+
+/******************************************
+/* MEDIA QUERIES          
+/*******************************************/
+
+
+
