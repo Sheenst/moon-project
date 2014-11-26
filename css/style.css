@@ -10,6 +10,7 @@ Author: Sheena Stevens
 
 /*
 Font Families for Reference:
+font-family: 'Roboto', sans-serif; (300,400,700)
 */
 
 /*Night Sky background color:
@@ -41,10 +42,9 @@ background: #002240;*/
 /*******************************************/
 
 body {
-     color: #DCDCDC;
      font-size: 12px;
      line-height: 1.4;
-     font-family: Helvetica, Arial, sans-serif;
+     font-family: 'Roboto', sans-serif;
 }
 
 /******************************************
@@ -56,7 +56,6 @@ body {
 	width: 320px;
 	margin: auto;
      text-align: center;
-     background: #002240;
      position: relative;
 
 }
@@ -83,6 +82,15 @@ h3 {
      display: inline-block;
 }
 
+#mainSection {
+     background: #002240;
+     color: #DCDCDC;
+}
+
+#moonImage {
+     padding: 20px;
+}
+
 div#datePicker {
      display: inline;
      margin: auto;
@@ -103,6 +111,24 @@ div#datePicker {
 
 #datePicker h2 {
      margin: auto;
+}
+
+.floatLeft {
+     float: left;
+}
+
+.rightAlign p {
+     text-align: right;
+     padding-right: 5px;
+}
+
+.leftAlign p {
+     text-align: left;
+     padding-left: 5px;
+}
+
+.halfScreen {
+     width: 50%;
 }
 
 /******************************************

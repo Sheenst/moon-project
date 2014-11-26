@@ -23,13 +23,14 @@ function moonAPI () {
 
 		console.log(moonAPIUrl);
 
-		$("h4#moonPhase").html("Moon phase: " + stage);
+		$("p#moonAge").html((data.age).toFixed(2) + " days");
+		$("p#moonPhase").html(stage);
 		if(data.illumination >= 1) {
 			illumination = parseInt(data.illumination);
 		} else if (data.illumination < 1) {
 			illumination = data.illumination.toFixed(2);
 		}
-		$("h4#illuminated").html(illumination + "% Illuminated");
+		$("p#illuminated").html(illumination + "%");
 		$("h3#nextFullMoon").html("Next Full Moon on " + data.FM.DT);
 		$("h3#nextNewMoon").html("Next New Moon on " + data.NNM.DT);
 
