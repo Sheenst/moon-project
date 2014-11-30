@@ -16,8 +16,9 @@ font-family: 'Roboto', sans-serif; (300,400,700)
 /*colors:
 Background greyish: #EFECE3;
 Night sky: #002240;
-yellow: #F5D91B
-dark yellow: #E9AE00*/
+yellow: #F5D91B;
+dark yellow: #E9AE00;
+red: #E00000;*/
 
 /******************************************
 /* SETUP                   
@@ -48,6 +49,9 @@ body {
      font-size: 12px;
      line-height: 1.4;
      font-family: 'Roboto', sans-serif;
+     height: 100%;
+     margin: 0;
+     padding: 0;
 }
 
 /******************************************
@@ -56,11 +60,13 @@ body {
 
 /* Center the container */
 #container {
-	width: 320px;
+	width: 100%;
+     height: 100%;
 	margin: auto;
      text-align: center;
      position: relative;
      background: #EFECE3;
+     padding: 0;
 
 }
 
@@ -69,10 +75,7 @@ header {
      text-align: center;
      border-bottom: solid #E9AE00 3px;
      background: #F5D91B;
-}
-
-footer {
-
+     line-height: .5;
 }
 
 /******************************************
@@ -100,6 +103,11 @@ h3 {
      overflow: hidden;
 }
 
+.moonDateSection {
+     border-left: 4px solid #F5D91B;
+     border-right: 4px solid #F5D91B;
+}
+
 div#datePicker {
      display: inline;
      margin: auto;
@@ -107,7 +115,7 @@ div#datePicker {
 }
 
 #datePicker img {
-     position: absolute; top: 100px;
+     position: absolute; top: 70px;
 }
 
 #datePicker img#leftButton {

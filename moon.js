@@ -1,5 +1,6 @@
 var dateInfo = new Date;
 var timestamp = Math.round((new Date()).getTime() / 1000);
+var moonGraphic;
 
 
 function getDayInfo () {
@@ -12,6 +13,7 @@ function getDateInfo () {
 	$("#datePicker h2#date").html(monthArray[dateInfo.getMonth()] + " " + dateInfo.getDate() + ", " + dateInfo.getFullYear());
 };
 
+
 function moonAPI () {
 
 	var moonAPIUrl = "http://api.burningsoul.in/moon/" + timestamp + "/N";
@@ -19,19 +21,55 @@ function moonAPI () {
 	$.getJSON(moonAPIUrl,function(data) {
 
 		var illumination;
-		var stage = data.stage;
+		var phase;
+		/*var phaseArray = ['New moon', 'Waxing crescent', 'First quarter', 'Waxing gibbous', 'Full moon', 'Waning gibbous', 'Third quarter', 'Waning crescent'];*/
 
 		console.log(moonAPIUrl);
 
+		/*Display correct moon graphic based on moon age*/
+		moonGraphic = Math.floor(data.age/1.0183);
+		console.log("moonGraphic = " + moonGraphic);
+		$("div#moonImage").html("<img src='images/phases/" + Math.floor(data.age/1.0183) + ".png'/>");
+
 		$("p#moonAge").html((data.age).toFixed(2) + " days");
-		$("p#moonPhase").html(stage);
+		
+/*		Moon phase based on age and illumination*/
+
+		if(data.illumination < 1) {
+			phase = "New moon"
+		}
+		if(data.illumination >= 1 && data.illumination <= 49 && data.age < 14.77) {
+			phase = "Waxing crescent"
+		}
+		if(data.illumination > 49 && data.illumination < 51 && data.age < 14.77) {
+			phase = "First quarter"
+		}
+		if(data.illumination >= 51 && data.illumination <= 99 && data.age < 14.77) {
+			phase = "Waxing gibbous"
+		}
+		if(data.illumination > 99 && data.illumination <= 100) {
+			phase = "Full moon"
+		}
+		if(data.illumination >= 51 && data.illumination <= 99 && data.age > 14.77) {
+			phase = "Waning gibbous"
+		}
+		if(data.illumination > 49 && data.illumination < 51 && data.age > 14.77) {
+			phase = "Third quarter"
+		}
+		if(data.illumination >= 1 && data.illumination <= 49 && data.age > 14.77) {
+			phase = "Waning crescent"
+		}
+		$("p#moonPhase").html(phase);
+		
 		if(data.illumination >= 1) {
 			illumination = parseInt(data.illumination);
 		} else if (data.illumination < 1) {
 			illumination = data.illumination.toFixed(2);
 		}
 		$("p#illuminated").html(illumination + "%");
+		
 		$("h3#nextFullMoon").html("Next Full Moon on " + data.FM.DT);
+		
 		$("h3#nextNewMoon").html("Next New Moon on " + data.NNM.DT);
 
 		console.log("Moon age = " + ((data.age).toFixed(2)) + ", illumination = " + illumination + "%");
