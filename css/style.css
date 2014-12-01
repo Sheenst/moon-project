@@ -46,10 +46,11 @@ red: #E00000;*/
 /*******************************************/
 
 body {
+     width: 100%;
+     height: 100%;
      font-size: 12px;
      line-height: 1.4;
      font-family: 'Roboto', sans-serif;
-     height: 100%;
      margin: 0;
      padding: 0;
 }
@@ -90,9 +91,15 @@ h3 {
      display: inline-block;
 }
 
+div#mainSection {
+     max-width: 500px;
+     margin: auto;
+}
+
 .sectionDiv #moonImage {
      padding: 20px;
      background: #002240;
+     height: 190px;
 }
 
 .sectionDiv {
@@ -103,9 +110,21 @@ h3 {
      overflow: hidden;
 }
 
+div#mainContent {
+     width: 90%;
+}
+
+.swipeBar {
+     border-radius: 10px;
+     overflow: hidden;
+     background: #E9AE00;
+     width: 5%;
+     height: 100%;
+
+}
+
 .moonDateSection {
-     border-left: 4px solid #F5D91B;
-     border-right: 4px solid #F5D91B;
+     margin: auto;
 }
 
 div#datePicker {

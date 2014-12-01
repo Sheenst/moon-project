@@ -26,19 +26,26 @@ function moonAPI () {
 
 		console.log(moonAPIUrl);
 
-		/*Display correct moon graphic based on moon age*/
-		moonGraphic = Math.floor(data.age/1.0183);
+/*Display correct moon graphic based on moon age*/
+
+		if((data.age <= .5) || (data.age >= 29)) {
+			moonGraphic = 1
+		} else {
+			moonGraphic = Math.round(data.age);	
+		}
+		console.log("data.age = " + data.age);
+
 		console.log("moonGraphic = " + moonGraphic);
-		$("div#moonImage").html("<img src='images/phases/" + Math.floor(data.age/1.0183) + ".png'/>");
+		$("div#moonImage").html("<img src='images/phases/" + moonGraphic + ".png'/>");
 
 		$("p#moonAge").html((data.age).toFixed(2) + " days");
 		
 /*		Moon phase based on age and illumination*/
 
-		if(data.illumination < 1) {
+		if(data.illumination <= 1) {
 			phase = "New moon"
 		}
-		if(data.illumination >= 1 && data.illumination <= 49 && data.age < 14.77) {
+		if(data.illumination > 1 && data.illumination <= 49 && data.age < 14.77) {
 			phase = "Waxing crescent"
 		}
 		if(data.illumination > 49 && data.illumination < 51 && data.age < 14.77) {
@@ -56,11 +63,12 @@ function moonAPI () {
 		if(data.illumination > 49 && data.illumination < 51 && data.age > 14.77) {
 			phase = "Third quarter"
 		}
-		if(data.illumination >= 1 && data.illumination <= 49 && data.age > 14.77) {
+		if(data.illumination > 1 && data.illumination <= 49 && data.age > 14.77) {
 			phase = "Waning crescent"
 		}
 		$("p#moonPhase").html(phase);
 		
+/*Illumination as integer, unless it's below 1*/
 		if(data.illumination >= 1) {
 			illumination = parseInt(data.illumination);
 		} else if (data.illumination < 1) {
