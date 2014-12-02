@@ -105,6 +105,7 @@ function jumpDay () {
 	$(".moonDateSection").on("swipeleft", function () {
 		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp+unixDay) + "/N";
 		timestamp += unixDay;
+		("#moonImage").css("background", "red")
 		console.log("Swiped left: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 	});
@@ -112,6 +113,7 @@ function jumpDay () {
 	$(".moonDateSection").on("swiperight", function () {
 		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp-unixDay) + "/N";
 		timestamp -= unixDay;
+		("#moonImage").css("background", "teal")
 		console.log("Swiped right: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 	});	
