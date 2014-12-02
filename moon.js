@@ -91,7 +91,7 @@ function jumpDay () {
 	$("img#rightButton").on("click", function () {
 		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp+unixDay) + "/N";
 		timestamp += unixDay;
-		console.log("Left button clicked: timestamp = " + timestamp + " URL = " + moonAPIUrl);
+		console.log("Right button clicked: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 	});
 
@@ -101,6 +101,21 @@ function jumpDay () {
 		console.log("Left button clicked: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 	});	
+
+	$(".moonDateSection").on("swipeleft", function () {
+		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp+unixDay) + "/N";
+		timestamp += unixDay;
+		console.log("Swiped left: timestamp = " + timestamp + " URL = " + moonAPIUrl);
+		moonAPI();
+	});
+
+	$(".moonDateSection").on("swiperight", function () {
+		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp-unixDay) + "/N";
+		timestamp -= unixDay;
+		console.log("Swiped right: timestamp = " + timestamp + " URL = " + moonAPIUrl);
+		moonAPI();
+	});	
+
 }
 
 

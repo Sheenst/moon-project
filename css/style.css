@@ -62,6 +62,7 @@ body {
      font-family: 'Roboto', sans-serif;
      margin: 0;
      padding: 0;
+     background: #EFECE3;
 }
 
 /******************************************
@@ -75,8 +76,6 @@ body {
 	margin: auto;
      text-align: center;
      position: relative;
-     background: #EFECE3;
-     padding: 0;
 
 }
 
