@@ -1,6 +1,9 @@
 var dateInfo = new Date;
 var timestamp = Math.round((new Date()).getTime() / 1000);
 var moonGraphic;
+var apiResults = null;
+var illumination;
+var phase;
 
 
 function getDayInfo () {
@@ -20,68 +23,72 @@ function moonAPI () {
 
 	$.getJSON(moonAPIUrl,function(data) {
 
-		var illumination;
-		var phase;
-		/*var phaseArray = ['New moon', 'Waxing crescent', 'First quarter', 'Waxing gibbous', 'Full moon', 'Waning gibbous', 'Third quarter', 'Waning crescent'];*/
-
 		console.log(moonAPIUrl);
 
+		return data;
+	});
+};
+
 /*Display correct moon graphic based on moon age*/
+function moonGraphic (apiResults) {
 
-		if((data.age <= .5) || (data.age >= 29)) {
-			moonGraphic = 1
-		} else {
-			moonGraphic = Math.round(data.age);	
-		}
-		console.log("data.age = " + data.age);
+	if((apiResults.age <= .5) || (apiResults.age >= 29)) {
+		moonGraphic = 1
+	} else {
+		moonGraphic = Math.round(apiResults.age);	
+	}
+	console.log("apiResults.age = " + apiResults.age);
 
-		console.log("moonGraphic = " + moonGraphic);
-		$("div#moonImage").html("<img src='images/phases/" + moonGraphic + ".png'/>");
+	console.log("moonGraphic = " + moonGraphic);
+	$("div#moonImage").html("<img src='images/phases/" + moonGraphic + ".png'/>");
 
-		$("p#moonAge").html((data.age).toFixed(2) + " days");
+	$("p#moonAge").html((apiResults.age).toFixed(2) + " days");
+
+};
 		
 /*		Moon phase based on age and illumination*/
-
-		if(data.illumination <= 1) {
-			phase = "New moon"
-		}
-		if(data.illumination > 1 && data.illumination <= 49 && data.age < 14.77) {
-			phase = "Waxing crescent"
-		}
-		if(data.illumination > 49 && data.illumination < 51 && data.age < 14.77) {
-			phase = "First quarter"
-		}
-		if(data.illumination >= 51 && data.illumination <= 99 && data.age < 14.77) {
-			phase = "Waxing gibbous"
-		}
-		if(data.illumination > 99 && data.illumination <= 100) {
-			phase = "Full moon"
-		}
-		if(data.illumination >= 51 && data.illumination <= 99 && data.age > 14.77) {
-			phase = "Waning gibbous"
-		}
-		if(data.illumination > 49 && data.illumination < 51 && data.age > 14.77) {
-			phase = "Third quarter"
-		}
-		if(data.illumination > 1 && data.illumination <= 49 && data.age > 14.77) {
-			phase = "Waning crescent"
-		}
-		$("p#moonPhase").html(phase);
+function moonPhase (apiResults) {
+	if(apiResults.illumination <= 1) {
+		phase = "New moon"
+	}
+	if(apiResults.illumination > 1 && apiResults.illumination <= 49 && apiResults.age < 14.77) {
+		phase = "Waxing crescent"
+	}
+	if(apiResults.illumination > 49 && apiResults.illumination < 51 && apiResults.age < 14.77) {
+		phase = "First quarter"
+	}
+	if(apiResults.illumination >= 51 && apiResults.illumination <= 99 && apiResults.age < 14.77) {
+		phase = "Waxing gibbous"
+	}
+	if(apiResults.illumination > 99 && apiResults.illumination <= 100) {
+		phase = "Full moon"
+	}
+	if(apiResults.illumination >= 51 && apiResults.illumination <= 99 && apiResults.age > 14.77) {
+		phase = "Waning gibbous"
+	}
+	if(apiResults.illumination > 49 && apiResults.illumination < 51 && apiResults.age > 14.77) {
+		phase = "Third quarter"
+	}
+	if(apiResults.illumination > 1 && apiResults.illumination <= 49 && apiResults.age > 14.77) {
+		phase = "Waning crescent"
+	}
+	$("p#moonPhase").html(phase);
+};
 		
 /*Illumination as integer, unless it's below 1*/
-		if(data.illumination >= 1) {
-			illumination = parseInt(data.illumination);
-		} else if (data.illumination < 1) {
-			illumination = data.illumination.toFixed(2);
+function illuminationInteger (apiResults) {
+		if(apiResults.illumination >= 1) {
+			illumination = parseInt(apiResults.illumination);
+		} else if (apiResults.illumination < 1) {
+			illumination = apiResults.illumination.toFixed(2);
 		}
 		$("p#illuminated").html(illumination + "%");
 		
-		$("h3#nextFullMoon").html("Next Full Moon on " + data.FM.DT);
+		$("h3#nextFullMoon").html("Next Full Moon on " + apiResults.FM.DT);
 		
-		$("h3#nextNewMoon").html("Next New Moon on " + data.NNM.DT);
+		$("h3#nextNewMoon").html("Next New Moon on " + apiResults.NNM.DT);
 
-		console.log("Moon age = " + ((data.age).toFixed(2)) + ", illumination = " + illumination + "%");
-	});
+		console.log("Moon age = " + ((apiResults.age).toFixed(2)) + ", illumination = " + illumination + "%");
 };
 
 function jumpDay () {
@@ -120,17 +127,17 @@ function jumpDay () {
 		moonAPI();
 	});	
 
-}
+};
 
 
 $(document).ready(function() {
-
-	moonAPI();
+	apiResults = moonAPI();
+	moonGraphic(apiResults);
+	moonPhase(apiResults);
+	illuminationInteger(apiResults);
 
 	getDayInfo();
 	getDateInfo();
-	
-	
 	jumpDay();
 
 });
