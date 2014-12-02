@@ -41,6 +41,15 @@ red: #E00000;*/
      height: 0;
 }
 
+/* Floats */
+.floatLeft {
+     float: left;
+}
+
+.floatRight {
+     float: right;
+}
+
 /******************************************
 /* BASE STYLES                   
 /*******************************************/
@@ -79,6 +88,10 @@ header {
      line-height: .5;
 }
 
+footer {
+     font-size: .8em;
+}
+
 /******************************************
 /* ADDITIONAL STYLES                   
 /*******************************************/
@@ -89,6 +102,10 @@ h1 {
 
 h3 {
      display: inline-block;
+}
+
+header h1 {
+     font-weight: 300;
 }
 
 div#mainSection {
@@ -133,24 +150,20 @@ div#datePicker {
      padding: 20px;
 }
 
-#datePicker img {
+/*#datePicker img {
      position: absolute; top: 70px;
-}
+}*/
 
-#datePicker img#leftButton {
+/*#datePicker img#leftButton {
      position: absolute; left: 30px;
 }
 
 #datePicker img#rightButton {
      position: absolute; right: 30px;
-}
+}*/
 
 #datePicker h2 {
      margin: auto;
-}
-
-.floatLeft {
-     float: left;
 }
 
 .rightAlign p {
