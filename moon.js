@@ -91,6 +91,7 @@ function jumpDay () {
 	$("img#rightButton").on("click", function () {
 		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp+unixDay) + "/N";
 		timestamp += unixDay;
+		("#moonImage").css("background", "red")
 		console.log("Right button clicked: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 	});
@@ -98,6 +99,7 @@ function jumpDay () {
 	$("img#leftButton").on("click", function () {
 		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp-unixDay) + "/N";
 		timestamp -= unixDay;
+		("#moonImage").css("background", "teal")
 		console.log("Left button clicked: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 	});	
