@@ -30,21 +30,15 @@
 			</header> 
 			
 			<div id='mainSection'>
-				<div class='moonDateSection clearfix'>
-					<div class='swipeBar sectionDiv floatLeft'> <!-- left button -->
+				<div class='moonDateSection sectionDiv'>
+					<div id='datePicker'>
+						<img src='images/Left_Button.png' height='25px' width='25' id='leftButton' class='floatLeft'>
+						<img src='images/Right_Button.png' height='25px' width='25' id='rightButton' class='floatRight'>
+						<h2 id="dayOfWeek"><strong></strong></h2>
+						<h2 id="date"></h2>
 					</div>
-					<div id='mainContent' class='sectionDiv floatLeft'> <!-- datepicker and moon image -->
-						<div id='datePicker'>
-							<img src='images/Left_Button.png' height='25px' width='25' id='leftButton' class='floatLeft'>
-							<img src='images/Right_Button.png' height='25px' width='25' id='rightButton' class='floatRight'>
-							<h2 id="dayOfWeek"><strong></strong></h2>
-							<h2 id="date"></h2>
-						</div>
-						<div id='moonImage'>
-							<img src='images/phases/1.png'>
-						</div>
-					</div>
-					<div class='swipeBar sectionDiv floatLeft'> <!-- right button -->
+					<div id='moonImage'>
+						<img src='images/phases/1.png'>
 					</div>
 				</div>
 				<div class='clearfix sectionDiv'>
@@ -58,7 +52,7 @@
 						<p id='moonPhase'>phase</p>
 						<p id='illuminated'>%</p>
 					</div>
-					<div class='sectionDiv'>
+					<div>
 						<h3 id="nextFullMoon"></h3>
 <!-- 						<h3 id="nextNewMoon"></h3> -->
 					</div>
