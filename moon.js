@@ -1,16 +1,17 @@
 var dateInfo = new Date;
-var timestamp = Math.round((new Date()).getTime() / 1000);
+var timestamp = Math.round((new Date()).getTime() / 1000); //check this out
 var moonGraphic;
 
-
+/*
 function getDayInfo () {
 	var dayArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-	$("#datePicker h2#dayOfWeek").html(dayArray[dateInfo.getDay()-1]);
-};
+	$("#datePicker h2#dayOfWeek").html(dayArray[moment.unix(timestamp).format("e")-1]);
+};*/
 
 function getDateInfo () {
-	var monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-	$("#datePicker h2#date").html(monthArray[dateInfo.getMonth()] + " " + dateInfo.getDate() + ", " + dateInfo.getFullYear());
+	var dayArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+	$("#datePicker h2#dayOfWeek").html(dayArray[moment.unix(timestamp).format("E")-1]);
+	$("#datePicker h2#date").html(moment.unix(timestamp).format("MMMM DD, YYYY"));
 };
 
 
@@ -94,6 +95,7 @@ function jumpDay () {
 /*		$("#moonImage").css("background", "red"); //for testing*/
 		console.log("Right button clicked: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
+		getDateInfo();
 	});
 
 	$("img#leftButton").on("click", function () {
@@ -102,6 +104,7 @@ function jumpDay () {
 /*		$("#moonImage").css("background", "teal"); //for testing*/
 		console.log("Left button clicked: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
+		getDateInfo();
 	});	
 
 	$(".moonDateSection").on("swipeleft", function () {
@@ -110,6 +113,7 @@ function jumpDay () {
 /*		$("#moonImage").css("background", "red"); //for testing*/
 		console.log("Swiped left: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
+		getDateInfo();
 	});
 
 	$(".moonDateSection").on("swiperight", function () {
@@ -118,6 +122,7 @@ function jumpDay () {
 /*		$("#moonImage").css("background", "teal"); //for testing*/
 		console.log("Swiped right: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
+		getDateInfo();
 	});	
 
 }
@@ -127,7 +132,7 @@ $(document).ready(function() {
 
 	moonAPI();
 
-	getDayInfo();
+/*	getDayInfo();*/
 	getDateInfo();
 	
 	

@@ -18,7 +18,8 @@ Background greyish: #EFECE3;
 Night sky: #002240;
 yellow: #F5D91B;
 dark yellow: #E9AE00;
-red: #E00000;*/
+red: #E00000;
+light blue: #76CBFF*/
 
 /******************************************
 /* SETUP                   
@@ -168,6 +169,7 @@ div#datePicker {
 
 p {
      margin: 0;
+     font-size: 1.2em;
 }
 
 .rightAlign p {
