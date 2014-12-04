@@ -1,6 +1,5 @@
-var dateInfo = new Date;
-var timestamp = Math.round((new Date()).getTime() / 1000); //check this out
-var moonGraphic;
+var timestamp = Math.round((new Date()).getTime() / 1000); //check this out...possible that rounding is skewing the timestamp
+var timestamp13 = ((new Date().getTime()) / 1000);
 
 /*
 function getDayInfo () {
@@ -28,6 +27,7 @@ function moonAPI () {
 		console.log(moonAPIUrl);
 
 /*Display correct moon graphic based on moon age*/
+		var moonGraphic;
 
 		if((data.age <= .5) || (data.age >= 29)) {
 			moonGraphic = 1

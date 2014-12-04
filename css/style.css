@@ -11,10 +11,12 @@ Author: Sheena Stevens
 /*
 Font Families for Reference:
 font-family: 'Roboto', sans-serif; (300,400,700)
+font-family: 'Lobster', cursive; (only 400)
 */
 
 /*colors:
 Background greyish: #EFECE3;
+greyish (darker): #DDDDD9;
 Night sky: #002240;
 yellow: #F5D91B;
 dark yellow: #E9AE00;
@@ -63,7 +65,7 @@ body {
      font-family: 'Roboto', sans-serif;
      margin: 0;
      padding: 0;
-     background: #EFECE3;
+/*     background: #EFECE3;*/
 }
 
 /******************************************
@@ -87,10 +89,13 @@ header {
      border-bottom: solid #E9AE00 3px;
      background: #F5D91B;
      line-height: .5;
+     font-family: 'Lobster', cursive;
+     color: #002240;
 }
 
 footer {
-     font-size: .8em;
+     font-size: .7em;
+     font-weight: 700;
 }
 
 /******************************************
@@ -99,14 +104,17 @@ footer {
 
 h1 {
      display: inline-block;
+     font-size: 3em;
+     line-height: .3;
+}
+
+h2 {
+     font-size: 1.4em;
+     font-weight: 400;
 }
 
 h3 {
      display: inline-block;
-}
-
-header h1 {
-     font-weight: 300;
 }
 
 div#mainSection {
@@ -114,18 +122,18 @@ div#mainSection {
      margin: auto;
 }
 
+.sectionDiv {
+     width: 90%;
+     border-radius: 10px;
+     background: #DDDDD9;
+     margin: 10px auto;
+     overflow: hidden;
+}
+
 .sectionDiv #moonImage {
      padding: 20px;
      background: #002240;
      height: 190px;
-}
-
-.sectionDiv {
-     width: 90%;
-     border-radius: 10px;
-     background: white;
-     margin: 10px auto;
-     overflow: hidden;
 }
 
 div#mainContent {
@@ -148,20 +156,8 @@ div#mainContent {
 div#datePicker {
      display: inline;
      margin: auto;
-     padding: 20px;
+     padding: 10px;
 }
-
-/*#datePicker img {
-     position: absolute; top: 70px;
-}*/
-
-/*#datePicker img#leftButton {
-     position: absolute; left: 30px;
-}
-
-#datePicker img#rightButton {
-     position: absolute; right: 30px;
-}*/
 
 #datePicker h2 {
      margin: auto;
@@ -170,6 +166,12 @@ div#datePicker {
 p {
      margin: 0;
      font-size: 1.2em;
+}
+
+#dateToggleSection {
+     position: relative; top: 70px;
+     max-height: 1px;
+     padding: 0 10px;
 }
 
 .rightAlign p {
@@ -186,6 +188,12 @@ p {
      width: 50%;
      padding: 10px 0;
 }
+
+/******************************************
+/* TOGGLE BUTTON          
+/*******************************************/
+
+
 
 /******************************************
 /* MEDIA QUERIES          
