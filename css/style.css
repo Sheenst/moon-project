@@ -11,7 +11,7 @@ Author: Sheena Stevens
 /*
 Font Families for Reference:
 font-family: 'Roboto', sans-serif; (300,400,700)
-font-family: 'Lobster', cursive; (only 400)
+font-family: 'Lobster Two', cursive; (only 400)
 */
 
 /*colors:
@@ -89,13 +89,13 @@ header {
      border-bottom: solid #E9AE00 3px;
      background: #F5D91B;
      line-height: .5;
-     font-family: 'Lobster', cursive;
+     font-family: 'Lobster Two', cursive;
      color: #002240;
 }
 
 footer {
      font-size: .7em;
-     font-weight: 700;
+     font-weight: 300;
 }
 
 /******************************************
