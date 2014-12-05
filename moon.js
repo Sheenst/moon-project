@@ -1,6 +1,13 @@
 var timestamp13 = new Date().getTime();
 var timestamp;
 
+function refresh () {
+	$('#pageRefresh').on("click", function() { 
+		console.log("refresh button clicked");
+		location.reload(true);
+	});
+};
+
 function time () {
 	timestamp = Math.round(timestamp13 / 1000);
 }
@@ -138,5 +145,6 @@ $(document).ready(function() {
 	getDateInfo();
 	datePicker();	
 	jumpDay();
+	refresh();
 
 });

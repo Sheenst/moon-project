@@ -88,8 +88,8 @@ header {
      border-bottom: solid #E9AE00 2px;
      background: #F5D91B;
      line-height: .5;
-     font-family: 'Merriweather', serif;
-     font-weight: 300;
+     font-family: 'Roboto', sans-serif;
+     font-weight: 700;
      color: #002240;
 }
 
@@ -106,6 +106,7 @@ h1 {
      display: inline-block;
      font-size: 2em;
      line-height: .3;
+     font-weight: 400;
 }
 
 h2 {
@@ -115,6 +116,16 @@ h2 {
 
 h3 {
      display: inline-block;
+}
+
+header a {
+     display: inline-block;
+     font-size: 2em;
+     line-height: .3;
+     font-weight: 400;
+     text-decoration: none;
+     color: black;
+     padding: 15px;
 }
 
 div#mainSection {
