@@ -5,12 +5,6 @@ function time () {
 	timestamp = Math.round(timestamp13 / 1000);
 }
 
-/*
-function getDayInfo () {
-	var dayArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-	$("#dateSection h2#dayOfWeek").html(dayArray[moment.unix(timestamp).format("e")-1]);
-};*/
-
 function getDateInfo () {
 	var dayArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 	$("#dateSection h2#dayOfWeek").html(dayArray[moment.unix(timestamp).format("E")-1]);
@@ -36,20 +30,15 @@ function datePicker () {
 
 };
 
-
 function moonAPI () {
-
 	var moonAPIUrl = "http://api.burningsoul.in/moon/" + timestamp + "/N";
 
 	$.getJSON(moonAPIUrl,function(data) {
-
 		var illumination;
 		var phase;
-		/*var phaseArray = ['New moon', 'Waxing crescent', 'First quarter', 'Waxing gibbous', 'Full moon', 'Waning gibbous', 'Third quarter', 'Waning crescent'];*/
-
 		console.log(moonAPIUrl);
 
-/*Display correct moon graphic based on moon age*/
+		/*Display correct moon graphic based on moon age*/
 		var moonGraphic;
 
 		if((data.age <= .5) || (data.age >= 29)) {
@@ -64,7 +53,7 @@ function moonAPI () {
 
 		$("p#moonAge").html((data.age).toFixed(2) + " days");
 		
-/*		Moon phase based on age and illumination*/
+		/*Moon phase based on age and illumination*/
 
 		if(data.illumination <= 1) {
 			phase = "New moon"
@@ -92,18 +81,14 @@ function moonAPI () {
 		}
 		$("p#moonPhase").html(phase);
 		
-/*Illumination as integer, unless it's below 1*/
+		/*Illumination as integer, unless it's below 1*/
 		if(data.illumination >= 1) {
 			illumination = parseInt(data.illumination);
 		} else if (data.illumination < 1) {
 			illumination = data.illumination.toFixed(2);
 		}
 		$("p#illuminated").html(illumination + "%");
-		
 		$("h3#nextFullMoon").html("Next Full Moon on " + data.FM.DT);
-		
-		$("h3#nextNewMoon").html("Next New Moon on " + data.NNM.DT);
-
 		console.log("Moon age = " + ((data.age).toFixed(2)) + ", illumination = " + illumination + "%");
 	});
 };
@@ -115,7 +100,6 @@ function jumpDay () {
 	$("img#rightButton").on("click", function () {
 		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp+unixDay) + "/N";
 		timestamp += unixDay;
-/*		$("#moonImage").css("background", "red"); //for testing*/
 		console.log("Right button clicked: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 		getDateInfo();
@@ -124,7 +108,6 @@ function jumpDay () {
 	$("img#leftButton").on("click", function () {
 		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp-unixDay) + "/N";
 		timestamp -= unixDay;
-/*		$("#moonImage").css("background", "teal"); //for testing*/
 		console.log("Left button clicked: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 		getDateInfo();
@@ -133,7 +116,6 @@ function jumpDay () {
 	$(".moonDateSection").on("swipeleft", function () {
 		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp+unixDay) + "/N";
 		timestamp += unixDay;
-/*		$("#moonImage").css("background", "red"); //for testing*/
 		console.log("Swiped left: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 		getDateInfo();
@@ -142,7 +124,6 @@ function jumpDay () {
 	$(".moonDateSection").on("swiperight", function () {
 		moonAPIUrl = "http://api.burningsoul.in/moon/" + (timestamp-unixDay) + "/N";
 		timestamp -= unixDay;
-/*		$("#moonImage").css("background", "teal"); //for testing*/
 		console.log("Swiped right: timestamp = " + timestamp + " URL = " + moonAPIUrl);
 		moonAPI();
 		getDateInfo();
@@ -154,12 +135,8 @@ function jumpDay () {
 $(document).ready(function() {
 	time();
 	moonAPI();
-
-/*	getDayInfo();*/
 	getDateInfo();
-	datePicker();
-	
-	
+	datePicker();	
 	jumpDay();
 
 });
