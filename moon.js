@@ -100,6 +100,33 @@ function moonAPI () {
 	});
 };
 
+function nextFullMoon() {
+	$('#nextMoonEvent').html("Full moon on...");
+};
+
+function nextNewMoon() {
+	$('#nextMoonEvent').html("New moon on...");
+};
+
+function moonToggle() {
+	var isVisible = $('.toggleSwitch').is(':visible');
+	var isHidden = $('.toggleSwitch').is(':hidden');
+
+	$('.toggleTrack').on("click", function() {
+		$('p.toggleSwitchNew').toggle();
+		$('p.toggleSwitchFull').toggle();
+		
+		if ($('.toggleSwitchFull').is(":visible")) {
+			console.log("toggleSwitchNew is hidden");
+			nextFullMoon();
+		}
+		if ($('.toggleSwitchNew').is(":visible")) {
+			console.log("toggleSwitchNew is visible");
+			nextNewMoon();
+		}
+	});
+};
+
 function jumpDay () {
 
 	var unixDay = 86400
@@ -140,10 +167,14 @@ function jumpDay () {
 
 
 $(document).ready(function() {
+	
+	$('p.toggleSwitchNew').hide();
+	nextFullMoon();
 	time();
 	moonAPI();
 	getDateInfo();
 	datePicker();	
+	moonToggle();
 	jumpDay();
 	refresh();
 

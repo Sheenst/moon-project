@@ -128,6 +128,27 @@ header a {
      padding: 15px;
 }
 
+p {
+     margin: 0;
+     font-size: 1.2em;
+}
+
+.rightAlign {
+     text-align: right;
+     padding-right: 5px;
+}
+
+.leftAlign p {
+     text-align: left;
+     padding-left: 5px;
+     font-weight: 700;
+}
+
+.halfScreen {
+     width: 50%;
+     padding: 10px 0;
+}
+
 div#mainSection {
      max-width: 500px;
      margin: auto;
@@ -157,7 +178,6 @@ h2#dayOfWeek {
 }
 
 div#dateSection {
-/*     display: inline;*/
      margin: auto;
      padding: 10px;
      text-align: left;
@@ -173,36 +193,78 @@ div#dateSection {
      max-height: 1px;
 }
 
-p {
-     margin: 0;
-     font-size: 1.2em;
-}
-
 #dateToggleSection {
-     position: relative; top: 70px;
+     position: relative; top: 75px;
      max-height: 1px;
-     padding: 0 10px;
+     padding: 0 15px;
 }
 
-.rightAlign {
-     text-align: right;
-     padding-right: 5px;
-}
-
-.leftAlign p {
-     text-align: left;
-     padding-left: 5px;
-     font-weight: 700;
-}
-
-.halfScreen {
-     width: 50%;
-     padding: 10px 0;
+#nextMoonEvent {
+     margin-top: 0;
 }
 
 /******************************************
 /* TOGGLE BUTTON          
 /*******************************************/
+
+.toggleWrapper {
+     height: 25px;
+     width: 50px;
+     margin: 10px auto;
+}
+
+.toggleTrack {
+     background: gray;
+     border-radius: 50px;
+     height: 100%;
+     width: 100%;
+}
+
+p.toggleSwitch {
+     width: 23px;
+     height: 23px;
+     margin: 1px;
+     border-radius: 100px;
+     padding: 3px;
+}
+
+p.toggleSwitchFull {
+     float: left;
+     background: white;
+}
+
+p.toggleSwitchNew {
+     float: right;
+     border: 1px white solid;
+}
+
+/*input .check {
+     position: absolute;
+     display: block;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     opacity: 0;
+     margin: 0;
+     z-index: 20;
+}*/
+
+/*p.toggleSwitch {
+     background: white;
+     position: absolute;
+     top: 1px;
+     left: 5%;
+     width: 43%;
+     height: 0;
+     padding-bottom: 43%;
+     margin: 3%;
+     border-radius: 100px;
+     z-index: 15;
+     transition: .35s cubic-bezier(.785,.135,.15,.86);
+     transition-property: left, right;
+     transition-delay: 0s,.5s;*/
+
 
 
 
