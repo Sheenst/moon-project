@@ -1,16 +1,39 @@
-var timestamp = Math.round((new Date()).getTime() / 1000); //check this out...possible that rounding is skewing the timestamp
-var timestamp13 = ((new Date().getTime()) / 1000);
+var timestamp13 = new Date().getTime();
+var timestamp;
+
+function time () {
+	timestamp = Math.round(timestamp13 / 1000);
+}
 
 /*
 function getDayInfo () {
 	var dayArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-	$("#datePicker h2#dayOfWeek").html(dayArray[moment.unix(timestamp).format("e")-1]);
+	$("#dateSection h2#dayOfWeek").html(dayArray[moment.unix(timestamp).format("e")-1]);
 };*/
 
 function getDateInfo () {
 	var dayArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-	$("#datePicker h2#dayOfWeek").html(dayArray[moment.unix(timestamp).format("E")-1]);
-	$("#datePicker h2#date").html(moment.unix(timestamp).format("MMMM DD, YYYY"));
+	$("#dateSection h2#dayOfWeek").html(dayArray[moment.unix(timestamp).format("E")-1]);
+	$("#dateSection h2#date").html(moment.unix(timestamp).format("MMMM DD, YYYY"));
+};
+
+function datePicker () {
+	$('#hiddenDate').datepicker({
+    dateFormat: "@",
+    onSelect: function(date) {
+    	timestamp13 = date;
+    	console.log("timestamp13 from onSelect = " + timestamp13);
+    	console.log("timestamp from onSelect = " + timestamp);
+    	time();
+    	moonAPI();
+			getDateInfo();
+    }
+  });
+  $('#pickDate').click(function (e) {
+    $('#hiddenDate').datepicker("show");
+    e.preventDefault();
+  });
+
 };
 
 
@@ -129,11 +152,12 @@ function jumpDay () {
 
 
 $(document).ready(function() {
-
+	time();
 	moonAPI();
 
 /*	getDayInfo();*/
 	getDateInfo();
+	datePicker();
 	
 	
 	jumpDay();

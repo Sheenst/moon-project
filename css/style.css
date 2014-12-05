@@ -65,7 +65,6 @@ body {
      font-family: 'Roboto', sans-serif;
      margin: 0;
      padding: 0;
-/*     background: #EFECE3;*/
 }
 
 /******************************************
@@ -86,7 +85,7 @@ header {
      margin: auto;
      margin-bottom: 10px;
      text-align: center;
-     border-bottom: solid #E9AE00 3px;
+     border-bottom: solid #E9AE00 2px;
      background: #F5D91B;
      line-height: .5;
      font-family: 'Merriweather', serif;
@@ -146,16 +145,21 @@ h2#dayOfWeek {
      font-size: 1.6em;
 }
 
-div#datePicker {
-     display: inline;
+div#dateSection {
+/*     display: inline;*/
      margin: auto;
      padding: 10px;
      text-align: left;
 }
 
-#datePicker h2 {
+#dateSection h2 {
      margin: auto;
-     padding-left: 15px;
+     padding-left: 5px;
+}
+
+#datepicker {
+     position: relative; bottom: 40px;
+     max-height: 1px;
 }
 
 p {
@@ -169,7 +173,7 @@ p {
      padding: 0 10px;
 }
 
-.rightAlign p {
+.rightAlign {
      text-align: right;
      padding-right: 5px;
 }
