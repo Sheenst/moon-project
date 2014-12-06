@@ -16,12 +16,10 @@ font-family: 'Merriweather', serif;
 
 /*colors:
 Background greyish: #EFECE3;
-greyish (darker): #DDDDD9;
 Night sky: #002240;
 yellow: #F5D91B;
 dark yellow: #E9AE00;
 red: #E00000;
-light blue: #76CBFF*/
 
 /******************************************
 /* SETUP                   
@@ -201,6 +199,7 @@ div#dateSection {
 
 #nextMoonEvent {
      margin-top: 0;
+     font-weight: 300;
 }
 
 /******************************************

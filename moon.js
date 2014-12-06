@@ -1,5 +1,7 @@
 var timestamp13 = new Date().getTime();
 var timestamp;
+var fullMoon;
+var newMoon;
 
 function refresh () {
 	$('#pageRefresh').on("click", function() { 
@@ -23,8 +25,6 @@ function datePicker () {
     dateFormat: "@",
     onSelect: function(date) {
     	timestamp13 = date;
-    	console.log("timestamp13 from onSelect = " + timestamp13);
-    	console.log("timestamp from onSelect = " + timestamp);
     	time();
     	moonAPI();
 			getDateInfo();
@@ -95,17 +95,25 @@ function moonAPI () {
 			illumination = data.illumination.toFixed(2);
 		}
 		$("p#illuminated").html(illumination + "%");
-		$("h3#nextFullMoon").html("Next Full Moon on " + data.FM.DT);
 		console.log("Moon age = " + ((data.age).toFixed(2)) + ", illumination = " + illumination + "%");
+
+		/*New Moon & Full Moon*/
+		fullMoon = moment.unix(Math.round(data.FM.UT)).format("MMMM DD, YYYY");
+		newMoon = moment.unix(data.NNM.UT).format("MMMM DD, YYYY");
+		console.log("NNM= " + data.NNM.UT);
+		console.log("FM= " + data.FM.UT);
+
+		nextFullMoon();
 	});
+
 };
 
 function nextFullMoon() {
-	$('#nextMoonEvent').html("Full moon on...");
+	$('#nextMoonEvent').html("Full moon on " + fullMoon);
 };
 
 function nextNewMoon() {
-	$('#nextMoonEvent').html("New moon on...");
+	$('#nextMoonEvent').html("New moon on " + newMoon);
 };
 
 function moonToggle() {
@@ -169,9 +177,10 @@ function jumpDay () {
 $(document).ready(function() {
 	
 	$('p.toggleSwitchNew').hide();
-	nextFullMoon();
+
 	time();
 	moonAPI();
+	
 	getDateInfo();
 	datePicker();	
 	moonToggle();
