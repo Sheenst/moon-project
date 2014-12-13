@@ -180,7 +180,6 @@ $(document).ready(function() {
 
 	time();
 	moonAPI();
-	
 	getDateInfo();
 	datePicker();	
 	moonToggle();
